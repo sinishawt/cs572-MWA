@@ -1,0 +1,35 @@
+<%- include('fragments/head.ejs')%>
+
+<body>
+
+    <%- include('fragments/navigation.ejs')%>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+           <%- include('fragments/sidebar.ejs')%>
+
+            <div class="col-lg-9">
+
+               
+
+                <div>
+                    <h1><%= prod.title%></h1>
+                    <p><img src="<%= prod.imageUrl%>" alt=""></p>
+                    <p>Price: <%= prod.price%></p>
+                    <p>Descritpion: <%= prod.description%></p>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+   
+ <%- include('fragments/end.ejs')%>

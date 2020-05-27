@@ -1,0 +1,64 @@
+<%- include('fragments/head.ejs')%>
+<body>
+
+  <%- include('fragments/navigation.ejs')%>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+           <%- include('fragments/sidebar.ejs')%>
+
+            <div class="col-lg-9">
+
+               <%- include ('fragments/corusel.ejs')%>
+
+                <div class="row">
+
+                    <% for(let p of prods) {%>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top" src="<%= p.imageUrl%>" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">
+                                        <%= p.title%>
+                                    </a>
+                                </h4>
+                                <h5>$<%= p.price%></h5>
+                                <p class="card-text"><%= p.description%></p>
+                            </div>
+                            <div class="card-footer">
+                                <a class="btn btn-primary" href="/products/<%= p.id%>" role="button">View Detail</a>
+                                <a class="btn btn-primary" href="/admin/edit-product/<%= p.id%>" role="button">Edit Product</a>
+                                <form action="/admin/delete-product" method="POST">
+                                    <input type="hidden" name="id" value="<%= p.id%>">
+                                    <button type="submit" class="btn btn-warning">Delete</button>
+                                </form>
+                                <form action="/add-to-cart" method="POST">
+                                    <input type="hidden" name="id" value="<%= p.id%>">
+                                    <button type="submit" class="btn btn-sucess">Add To Cart</button>
+                                </form>
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+                }
+                    %>
+                   
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+<%- include('fragments/end.ejs')%>
